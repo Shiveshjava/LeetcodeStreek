@@ -1,0 +1,11 @@
+class Solution {
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+         if (p == null && q == null) return true;
+
+        // One of them is null → not same
+        if (p == null || q == null) return false;
+
+        // Check current node values and recurse on left and right
+        return (p.val == q.val)&& isSameTree(p.left, q.left)&& isSameTree(p.right, q.right);
+    }
+}
