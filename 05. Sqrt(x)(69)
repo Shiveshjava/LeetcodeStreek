@@ -1,0 +1,46 @@
+class Solution {
+    public int mySqrt(int x) {
+       int root = (int) Math.sqrt(x); 
+       return root;
+    }
+}
+
+
+LINEAR SEARCH--
+class Solution {
+    public int mySqrt(int x) {
+         
+    if (x == 0) return 0;
+
+        int ans = 0;
+        for (double i = 1; i <= x; i++) {
+            if (i * i <= x) {
+                ans = (int) i;   // store integer part
+            } else {
+                break;
+            }
+        }
+        return ans;
+    }
+}
+BINARY SEARCH--
+class Solution {
+    public int mySqrt(int x) {
+        if (x == 0) return 0;
+
+        int left = 1, right = x, ans = 0;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            if ((long) mid * mid <= x) {  // cast to long to avoid overflow
+                ans = mid;
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        return ans;
+    }
+}
